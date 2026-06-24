@@ -1,78 +1,39 @@
-\# Камеры Stormworks в отдельном окне (Stormworks Camera Extractor)
+# Stormworks Camera Extractor (Separate Window Mod)
 
+A modification for **Stormworks: Build and Rescue** that intercepts in-game monitor textures and redirects the camera feeds into a standalone, separate Windows window. This allows you to easily move your vehicle's cameras or displays to a second monitor.
 
+---
 
-Модификация для игры \*\*Stormworks: Build and Rescue\*\*, которая перехватывает текстуры игровых мониторов и выводит изображение с камер в отдельное полноценное окно Windows. Это позволяет вынести интерфейс или камеры техники на второй монитор.
+## 📸 Guide & Screenshots
 
+### Step 1. Visual Studio Project Setup
+To compile this project, you need to create a `Dynamic-Link Library (DLL)` project in Visual Studio. In the project properties (`Configuration Properties -> VC++ Directories`), make sure to include the paths for both **MinHook** and **Kiero** headers and libraries.
 
+![Visual Studio Project Setup](1.jpg)
 
-\---
+### Step 2. Initializing the Graphics Hook (OpenGL)
+The code initializes the Kiero library targeting OpenGL, and MinHook hooks the original `wglSwapBuffers` function. This allows the program to capture the framebuffer before it gets rendered onto the main screen.
 
+![Kiero and MinHook Initialization in C++](2.jpg)
 
+### Step 3. Injecting the DLL into the Game
+Since the utility compiles into a `.dll` file, it needs to be injected into the running `stormworks.exe` process. You can use any standard DLL Injector for this (e.g., Process Hacker, Cheat Engine, or your own custom launcher).
 
-\## 📸 Гайд и Скриншоты
+![DLL Injection Process](3.jpg)
 
+### Step 4. Final Result
+Once successfully injected, the game continues running smoothly without any performance loss, while a new standalone custom window appears on your desktop, duplicating the selected camera feed.
 
+![Stormworks Camera in a Separate Window](4.jpg)
 
-\### Шаг 1. Настройка проекта в Visual Studio
+---
 
-Для компиляции проекта необходимо создать `Dynamic-Link Library (DLL)` в Visual Studio. В свойствах проекта (`Configuration Properties -> VC++ Directories`) обязательно укажите пути к заголовочным файлам (Include) и библиотекам (Library) для \*\*MinHook\*\* и \*\*Kiero\*\*.
+## 🛠 Compilation Requirements
 
+To successfully build this project from source, you will need the following dependencies:
 
+1. **Kiero Hook (v2)** — A universal tool for finding graphic API function addresses. It is required to locate the pointer for the OpenGL graphics context function in Stormworks.
+   
+2. **MinHook** — A minimalist x86/x64 API hooking library written in C. It redirects the game's original rendering function call to your custom implementation.
 
-!\[Настройка проекта в Visual Studio](1.jpg)
-
-
-
-\### Шаг 2. Инициализация графического хука (OpenGL)
-
-В коде инициализируется библиотека Kiero под OpenGL, а MinHook подменяет оригинальную функцию `wglSwapBuffers`. Это позволяет программе перехватывать буфер кадра до того, как он отрисуется на экране.
-
-
-
-!\[Инициализация Kiero и MinHook в C++](2.jpg)
-
-
-
-\### Шаг 3. Внедрение (Инжекция) DLL в игру
-
-Поскольку утилита компилируется в формат `.dll`, её необходимо внедрить в процесс запущенной игры `stormworks.exe`. Для этого можно использовать любой DLL Injector (например, Process Hacker, Cheat Engine или собственный лаунчер).
-
-
-
-!\[Процесс инжекции DLL в Stormworks](3.jpg)
-
-
-
-\### Шаг 4. Результат работы программы
-
-После успешной инжекции игра продолжает работать без потери производительности, но на рабочем столе появляется дополнительное кастомное окно, дублирующее поток выбранной камеры.
-
-
-
-!\[Вывод камеры Stormworks в отдельное окно Windows](4.jpg)
-
-
-
-\---
-
-
-
-\## 🛠 Что требуется для компиляции?
-
-
-
-Чтобы успешно собрать данный проект из исходного кода, вам понадобятся следующие зависимости:
-
-
-
-1\. \*\*Kiero Hook (v2)\*\* — Универсальный инструмент для поиска адресов функций графических API. Он необходим для нахождения указателя на функцию графического контекста OpenGL игры Stormworks.
-
-&#x20;  
-
-2\. \*\*MinHook\*\* — Минималистичная библиотека на C для создания хуков (detours) в x86/x64 системах. Она подменяет оригинальную функцию отрисовки игры на вашу кастомную.
-
-
-
-3\. \*\*OpenGL (Заголовочные файлы и расширения)\*\* — Так как Stormworks построена на OpenGL, для работы с буферами кадров (Framebuffers) и текстурами камер вам понадобятся заголовочные файлы расширений (например, \*\*GLEW\*\* или \*\*glad\*\*), а также линковка с `Opengl32.lib`.
-
+3. **OpenGL (Headers & Extensions)** — Since Stormworks is built on OpenGL, you will need extension headers (such as **GLEW** or **glad**) to manipulate framebuffers and camera textures, as well as linking against `Opengl32.lib`.
