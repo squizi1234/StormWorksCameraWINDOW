@@ -37,3 +37,20 @@ To successfully build this project from source, you will need the following depe
 2. **MinHook** — A minimalist x86/x64 API hooking library written in C. It redirects the game's original rendering function call to your custom implementation.
 
 3. **OpenGL (Headers & Extensions)** — Since Stormworks is built on OpenGL, you will need extension headers (such as **GLEW** or **glad**) to manipulate framebuffers and camera textures, as well as linking against `Opengl32.lib`.
+
+---
+
+## 🍕 Support the Project / Buy me some food
+
+Developing and reversing game code takes a lot of time, effort, and late nights. If this tool helped you or saved your multi-monitor setup, **I really need your support to keep going and buy some food!** Any donation is deeply appreciated.
+
+* **ETH (Ethereum / ERC-20):** `0xC280Eb895795B1058C8A671eD79aDBFe14c7F71C`
+* **USDT (ERC-20):** `0xC280Eb895795B1058C8A671eD79aDBFe14c7F71C`
+* **TRX (Tron Network):** `TU27CurhG86YXTVyeYPWqZYLd9NMfAMWAD`
+
+*Thank you for supporting independent development!*
+
+---
+
+## 📝 Note on Language
+*This project documentation and localized texts were generated with the help of an AI assistant, as I do not speak or write fluent Russian.*
