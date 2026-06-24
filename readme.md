@@ -1,5 +1,9 @@
 # Stormworks Camera Extractor (Separate Window Mod)
 
+Language / Язык: **English 🇬🇧** | [Русский 🇷🇺](readmeru.md)
+
+---
+
 A modification for **Stormworks: Build and Rescue** that intercepts in-game monitor textures and redirects the camera feeds into a standalone, separate Windows window. This allows you to easily move your vehicle's cameras or displays to a second monitor.
 
 ---
