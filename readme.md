@@ -4,6 +4,17 @@ A modification for **Stormworks: Build and Rescue** that intercepts in-game moni
 
 ---
 
+## 🍕 Support the Project / I really need money to buy food
+
+Developing and reversing game code takes a lot of time, effort, and late nights. If this tool helped you or saved your multi-monitor setup, **I really need your support to keep going and buy some food!** Any donation is deeply appreciated.
+
+| **ETH (Ethereum / ERC-20)** | **USDT (ERC-20)** | **TRX (Tron Network)** |
+| :---: | :---: | :---: |
+| `0xC280Eb895795B1058C8A671eD79aDBFe14c7F71C` | `0xC280Eb895795B1058C8A671eD79aDBFe14c7F71C` | `TU27CurhG86YXTVyeYPWqZYLd9NMfAMWAD` |
+| ![ETH QR](eth.jpg) | ![USDT QR](usdt.jpg) | ![TRX QR](trx.jpg) |
+
+---
+
 ## 📸 Guide & Screenshots
 
 ### Step 1. Visual Studio Project Setup
