@@ -52,6 +52,18 @@ To successfully build this project from source, you will need the following depe
 2. **MinHook** — A minimalist x86/x64 API hooking library written in C. It redirects the game's original rendering function call to your custom implementation.
 
 3. **OpenGL (Headers & Extensions)** — Since Stormworks is built on OpenGL, you will need extension headers (such as **GLEW** or **glad**) to manipulate framebuffers and camera textures, as well as linking against `Opengl32.lib`.
+---
+
+## 🔍 Important Note on Game Camera Culling
+
+Due to how the Stormworks game engine optimizes rendering, camera textures are dynamically culled (they stop updating) in the following cases:
+* If you move too far away from the camera/monitor.
+* If you stand extremely close to the monitor or look through walls.
+* If you are sitting in a pilot seat and the physical monitor is completely out of your direct line of sight.
+
+**The texture only captures and updates in the separate window when the camera/monitor is actively being rendered on your screen at any distance.**
+
+💡 **Workaround:** To force the game engine to keep the remote camera textures active at all times, place a small local monitor inside your vehicle's cabin or near your seat linked to that camera stream. This forces Stormworks to process the texture, allowing the DLL hook to capture it continuously.
 
 ---
 
