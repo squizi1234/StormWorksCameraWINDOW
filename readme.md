@@ -56,14 +56,14 @@ To successfully build this project from source, you will need the following depe
 
 ## 🔍 Important Note on Game Camera Culling
 
-Due to how the Stormworks game engine optimizes rendering, camera textures are dynamically culled (they stop updating) in the following cases:
-* If you move too far away from the camera/monitor.
-* If you stand extremely close to the monitor or look through walls.
-* If you are sitting in a pilot seat and the physical monitor is completely out of your direct line of sight.
+Due to Stormworks engine optimization, the camera texture inside the separate window will only update if the in-game monitor is within your character's field of view (in front of you). 
 
-**The texture only captures and updates in the separate window when the camera/monitor is actively being rendered on your screen at any distance.**
+Here is exactly how it behaves:
+* **Distance Limit:** It works perfectly at any close range or at a distance **up to 700 meters**, as long as you are looking in its direction. Beyond 700 meters, it stops updating.
+* **Through Walls / Obstacles:** It works perfectly fine even if you look at it **through walls or other textures**, as long as the monitor is physically in front of your view.
+* **In a Vehicle / Pilot Seat:** If you are driving and the monitor is placed behind you or out of your current front view, it will stop updating. It **must be in front of you and facing your direction**, even if obscured by cockpit geometry.
 
-💡 **Workaround:** To force the game engine to keep the remote camera textures active at all times, place a small local monitor inside your vehicle's cabin or near your seat linked to that camera stream. This forces Stormworks to process the texture, allowing the DLL hook to capture it continuously.
+💡 **Workaround:** If you need to stream a remote camera that is too far away or behind you, place a small secondary monitor directly in front of your pilot seat and link it to that camera. As long as this local screen is in front of you, the engine renders the texture, and the DLL hook will capture it smoothly.
 
 ---
 
