@@ -55,6 +55,17 @@ To successfully build this project from source, you will need the following depe
 
 ---
 
+## 🔍 Important Note on Game Camera Culling
+
+Due to how the Stormworks game engine optimizes rendering, camera textures are dynamically culled (they stop updating) in the following cases:
+* If you move too far away from the camera/monitor.
+* If you stand extremely close to the monitor or look through walls.
+* If you are sitting in a pilot seat and the physical monitor is completely out of your direct line of sight.
+
+**The texture only captures and updates in the separate window when the camera/monitor is actively being rendered on your screen at any distance.**
+
+💡 **Workaround:** To force the game engine to keep the remote camera textures active at all times, place a small local monitor inside your vehicle's cabin or near your seat linked to that camera stream. This forces Stormworks to process the texture, allowing the DLL hook to capture it continuously.
+
 ## 🍕 Support the Project / Buy me some food
 
 Developing and reversing game code takes a lot of time, effort, and late nights. If this tool helped you or saved your multi-monitor setup, **I really need your support to keep going and buy some food!** Any donation is deeply appreciated.
